@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A Little Surprise for You ❤️</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:18px;background:radial-gradient(circle at top,#ffe8ef,#f2bfd0);font-family:Georgia,serif;color:#76253e}
+.card{width:min(100%,440px);background:linear-gradient(145deg,#fff8f3,#ffe5ec);border:2px solid white;border-radius:28px;padding:26px 20px;text-align:center;box-shadow:0 18px 45px #8b315533;position:relative}
+.card:before{content:"";position:absolute;inset:10px;border:1px dashed #d98ca2;border-radius:20px;pointer-events:none}
+.ribbon{font:700 12px Arial;letter-spacing:3px;color:#b45a75}h1{font-size:clamp(30px,8vw,39px);margin:14px 0 8px;color:#8e2949}
+.sub{font-style:italic;font-size:18px;margin:0 0 20px;color:#a54c68}
+button{border:0;border-radius:30px;padding:12px 20px;background:#922d50;color:white;font-weight:bold;font-size:14px;cursor:pointer;margin:4px}
+.scratch{position:relative;height:190px;border-radius:20px;overflow:hidden;background:#fff0f4;box-shadow:inset 0 0 0 2px #efbdca}
+.prize{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:12px}
+.emoji{font-size:40px}.prize strong{font-size:clamp(23px,6vw,30px);color:#a52d55}.prize span{font:14px Arial;color:#8b5364;margin-top:8px}
+canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}
+.hint{font:13px Arial;color:#a45b70;margin:13px 0 0}.compliment{font-size:16px;line-height:1.55;margin:19px 3px 5px;color:#85324e}
+.signature{font-style:italic;font-size:21px;color:#9b3154;margin-top:10px}
+#replay{display:none}
+</style></head><body>
+<main class="card">
+<div class="ribbon">A LITTLE GIFT • JUST FOR YOU</div>
+<h1>♡ A Little Surprise for You ♡</h1>
+<p class="sub">A tiny gift for the girl who makes my world softer.</p>
+<button id="play">▶ Play our little song 🎶</button>
+<audio id="song" preload="auto" loop><source src="our-song.mp4" type="video/mp4"></audio>
+<section class="scratch" aria-label="Scratch to reveal your surprise">
+<div class="prize"><div class="emoji">😘💗</div><strong>1000 FOREHEAD KISSES</strong><span>Unlimited hugs, cuddles &amp; love — redeem anytime!</span></div>
+<canvas id="foil"></canvas></section>
+<p class="hint" id="hint">Use your finger to scratch and reveal your gift ✨</p>
+<p class="compliment">Before you, life felt like a sky with its colours turned down. Then you came along, and somehow the little things started feeling lighter, the difficult days became easier to face, and my world slowly found its way back to beautiful. You didn't just become a part of my life — you changed the way it feels to live it. You're not simply one of the brightest stars in my sky; <b>you're the light that makes my whole universe glow.</b> You mean more to me than I could ever fit into words, my most extraordinary girl. ❤️</p>
+<div class="signature">Forever yours, Dudu ❤️</div>
+<section class="quiz" style="margin-top:22px;text-align:left;background:#fff7f8;border:1px solid #efbdca;border-radius:18px;padding:17px;color:#85324e">
+  <div style="text-align:center;font:700 12px Arial;letter-spacing:2px;color:#b45a75">🎀 A LITTLE LOVE QUIZ 🎀</div>
+  <h2 style="text-align:center;font-size:23px;margin:8px 0 5px;color:#922d50">For My Princess</h2>
+  <p style="text-align:center;font-style:italic;margin:0 0 16px">Baby, let's see how well you know your Dudu! 😚❤️</p>
+  <form id="loveQuiz">
+    <p><b>Q1. What is my favourite thing to do with you?</b></p>
+    <label><input type="radio" name="q1" value="A"> A) Tease you 😂</label><br>
+    <label><input type="radio" name="q1" value="B"> B) Make you smile 🥹</label><br>
+    <label><input type="radio" name="q1" value="C"> C) Hug you tightly 🤗</label><br>
+    <label><input type="radio" name="q1" value="D"> D) All of these ❤️</label>
+    <p><b>Q2. What do I want most in our future?</b></p>
+    <label><input type="radio" name="q2" value="A"> A) Lots of money</label><br>
+    <label><input type="radio" name="q2" value="B"> B) A beautiful life with you</label><br>
+    <label><input type="radio" name="q2" value="C"> C) Travelling the world</label><br>
+    <label><input type="radio" name="q2" value="D"> D) All of the above, with you 💗</label>
+    <p><b>Q3. If I had to choose you or anything else in this world?</b></p>
+    <label><input type="radio" name="q3" value="A"> A) Think about it 🤔</label><br>
+    <label><input type="radio" name="q3" value="B"> B) Choose you, obviously!</label><br>
+    <label><input type="radio" name="q3" value="C"> C) Ask for more time 😂</label><br>
+    <label><input type="radio" name="q3" value="D"> D) You already know the answer, baby! ❤️</label>
+    <p><b>BONUS QUESTION: How much does your Dudu love you?</b></p>
+    <label><input type="radio" name="qb" value="A"> A) A little</label><br>
+    <label><input type="radio" name="qb" value="B"> B) A lot</label><br>
+    <label><input type="radio" name="qb" value="C"> C) More than words can explain</label><br>
+    <label><input type="radio" name="qb" value="D"> D) Infinitely ♾️❤️</label>
+    <button type="submit" style="display:block;margin:16px auto 0">Submit my answers 💗</button>
+  </form>
+  <p id="quizResult" style="display:none;text-align:center;font-weight:bold;line-height:1.5"></p>
+  <div style="border-top:1px dashed #d98ca2;margin-top:17px;padding-top:14px">
+    <b>💌 FINAL MINI DARE — JUST FOR MY PRINCESS</b>
+    <p>Send your Dudu one picture with your prettiest smile 🥹, one voice note saying “I love you, Dudu!” ❤️, and one tight virtual hug! 🤗</p>
+    <p style="text-align:center;font-style:italic">No skipping allowed, Princess! Your reward is a lifetime supply of kisses, cuddles and endless love. 😘</p>
+  </div>
+</section>
+
+<button id="replay">Play the surprise again</button>
+</main>
+<script>
+const audio=document.getElementById('song'),play=document.getElementById('play');
+play.addEventListener('click',async()=>{try{await audio.play();play.textContent='♪ Our song is playing ❤️'}catch(e){play.textContent='Tap to play our song 🎶'}});
+const c=document.getElementById('foil'),x=c.getContext('2d'),hint=document.getElementById('hint'),replay=document.getElementById('replay');let down=false,done=false;
+function paint(){const r=c.getBoundingClientRect(),d=Math.max(1,devicePixelRatio||1);c.width=r.width*d;c.height=r.height*d;x.setTransform(d,0,0,d,0,0);let g=x.createLinearGradient(0,0,r.width,r.height);g.addColorStop(0,'#aaa4a8');g.addColorStop(.5,'#eee9eb');g.addColorStop(1,'#b8b0b5');x.fillStyle=g;x.fillRect(0,0,r.width,r.height);x.fillStyle='#66545c';x.font='bold 16px Arial';x.textAlign='center';x.fillText('♡  SCRATCH TO REVEAL  ♡',r.width/2,r.height/2+6);x.globalCompositeOperation='destination-out'}
+function pos(e){const r=c.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+function rub(e){if(!down||done)return;const p=pos(e);x.globalCompositeOperation='destination-out';x.beginPath();x.arc(p.x,p.y,23,0,Math.PI*2);x.fill();check()}
+function check(){const a=x.getImageData(0,0,c.width,c.height).data;let n=0;for(let i=3;i<a.length;i+=4)if(a[i]<30)n++;if(!done&&n/(a.length/4)>.4){done=true;c.style.transition='opacity .5s';c.style.opacity='0';setTimeout(()=>c.style.display='none',520);hint.textContent='Surprise unlocked! Your 1000 kisses are waiting, princess! 💋';replay.style.display='inline-block'}}
+c.addEventListener('pointerdown',e=>{down=true;c.setPointerCapture(e.pointerId);rub(e)});c.addEventListener('pointermove',rub);['pointerup','pointercancel','lostpointercapture'].forEach(v=>c.addEventListener(v,()=>down=false));
+replay.addEventListener('click',()=>{done=false;c.style.display='block';c.style.opacity='1';paint();hint.textContent='Use your finger to scratch and reveal your gift ✨';replay.style.display='none'});
+paint();window.addEventListener('resize',()=>{if(!done)paint()});
+
+const loveQuiz=document.getElementById('loveQuiz');
+if(loveQuiz){loveQuiz.addEventListener('submit',function(e){
+ e.preventDefault();
+ const names=['q1','q2','q3','qb'];
+ const missing=names.some(n=>!loveQuiz.querySelector('input[name="'+n+'"]:checked'));
+ const out=document.getElementById('quizResult');
+ if(missing){out.style.display='block';out.textContent='Answer all four, princess! No skipping 😚❤️';return;}
+ out.style.display='block';
+ out.textContent='Awww, my clever princess! Every answer is precious to me. Your prize: one extra-tight hug and endless kisses from Dudu! 😘❤️';
+});}
+
+</script></body></html>
